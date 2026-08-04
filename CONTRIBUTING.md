@@ -41,6 +41,12 @@ python3 tools/validate_skill.py SKILL.md
 - Add or update tests for any behavior change.
 - Update `CHANGELOG.md` under an `## [Unreleased]` section.
 - CI must be green (lint, test matrix py3.10–3.13, smoke, SKILL.md validation).
+- **We don't accept PRs that add third-party or "related / built-with" project
+  links to the README or docs.** Recognition in the README is a
+  [GitHub Sponsors](https://github.com/sponsors/virgiliojr94) benefit (sponsors are
+  listed in `BACKERS.md`). This keeps the project's most visible surface reserved
+  for the people funding its upkeep. Building something inspired by book-to-skill
+  is genuinely appreciated — sharing it in an issue or discussion is welcome.
 
 ## Releases
 
