@@ -45,6 +45,10 @@ theme:
 nav:
   - Home: index.md
   - Guide: guide.md
+  - How it works: HOW_IT_WORKS.md
+  - Usage: USAGE.md
+  - Install: INSTALL.md
+  - FAQ: FAQ.md
   - Architecture: ARCHITECTURE.md
   - Performance: PERFORMANCE.md
   - Skill Reference: skill-reference.md
