@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/logo.png" alt="book-to-skill logo" width="120">
+  <img src="docs/assets/banner.webp" alt="Booklin, the book-to-skill wizard, holding an open book whose pages scatter into sparkles that settle into an ordered grid" width="100%">
 </p>
 
 <h1 align="center">book-to-skill</h1>

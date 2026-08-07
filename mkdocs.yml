@@ -59,9 +59,9 @@ nav:
 plugins:
   # `search` is on by default, but naming any plugin replaces the default list.
   - search
-  # Generates the per-page og:/twitter: tags and the shared preview card.
-  # Needs mkdocs-material[imaging] + libcairo2 — see deploy-docs.yml.
-  - social
+  # No `social` plugin: the share card is a hand-made docs/assets/og-card.jpg and
+  # overrides/main.html emits the og:/twitter: tags around it.
+  #
   # The docs pages were renamed to lowercase kebab-case slugs; keep the old
   # SHOUTING_CASE URLs alive so existing inbound links and bookmarks resolve.
   - redirects:
