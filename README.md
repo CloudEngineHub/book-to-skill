@@ -117,6 +117,8 @@ Two halves: a deterministic Python **extractor** (document → clean text + meta
 
 ▶️ **All modes and examples → [docs/usage.md](docs/usage.md)**
 
+💬 **Using it for something? → [use cases](https://github.com/virgiliojr94/book-to-skill-use-cases)** — what people converted, the numbers they measured, and where it fell short. Your account lives in your own Gist; the index takes a one-line PR.
+
 ---
 
 ## 📥 Install

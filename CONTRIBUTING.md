@@ -52,6 +52,15 @@ python3 tools/validate_skill.py SKILL.md
   listed in `BACKERS.md`). This keeps the project's most visible surface reserved
   for the people funding its upkeep. Building something inspired by book-to-skill
   is genuinely appreciated — sharing it in an issue or discussion is welcome.
+- **Use cases are the exception, and they live elsewhere.** An account of a
+  conversion you ran — the document, the command, the measured tokens, what the
+  skill turned out to be good for and where it fell short — belongs in
+  [book-to-skill-use-cases](https://github.com/virgiliojr94/book-to-skill-use-cases):
+  your write-up as a Gist on your own account, one line in the index there, no
+  template and no CI. That is evidence of use, not promotion, which is why it is
+  welcome where a "built with" link is not. It does not change this rule: the
+  README and `docs/` stay reserved for sponsors, and entries without measurements
+  read as ads.
 
 ## Releases
 
