@@ -6,6 +6,9 @@ Thank you to everyone who sponsors my open-source work. Your support funds PR re
 
 ---
 
+Tiers follow the monthly amount on the [sponsors page](https://github.com/sponsors/virgiliojr94):
+Gold $100+ · Silver $50–99 · Bronze $15–49 · Backers $5–14 and one-time.
+
 ## 🥇 Gold Sponsors
 
 _Be the first._
@@ -20,7 +23,7 @@ _Be the first._
 
 ## 💖 Backers
 
-_Be the first._
+- **[Gui Santos (@guiofsaints)](https://github.com/guiofsaints)** — the first person to sponsor this work.
 
 ---
 
