@@ -40,6 +40,14 @@ In GitHub Copilot CLI you may need to run `/skills reload` after the file is wri
 
 ---
 
+## 💬 What people do with it
+
+A DevEx book became a survey applied to 300+ engineers. A scanned PDF that stalled a run became [#130](https://github.com/virgiliojr94/book-to-skill/pull/130), the early-abort fix — reported by someone who does not write software.
+
+Both accounts, and how to add yours, are in [book-to-skill-use-cases](https://github.com/virgiliojr94/book-to-skill-use-cases): your write-up as a Gist on your own account, one line in the index, no template and no CI. Bring the numbers from your run or what came of it — and say where it fell short.
+
+---
+
 
 ---
 
