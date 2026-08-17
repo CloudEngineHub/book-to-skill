@@ -46,8 +46,14 @@ from book_to_skill.parsers.epub import (
     extract_with_ebooklib,
     extract_with_zipfile,
     count_epub_chapters,
+    count_epub_images,
 )
 from book_to_skill.sanitize import sanitize_extracted_text
+
+
+# Covers and decorative assets are common in prose EPUBs, so only surface the
+# omission when the archive contains more than five images.
+_EPUB_IMAGE_NOTICE_THRESHOLD = 5
 
 
 # CJK codepoints: ideographs + extensions, kana, hangul, CJK punctuation, and
@@ -637,6 +643,7 @@ def extract_single_file(input_path: Path, extraction_mode: str, install_mode: st
     method = ""
     pages = 0
     pages_label = "sections"
+    images_dropped = None
     
     if ext == ".epub":
         print(f"Extracting EPUB: {input_str}")
@@ -659,6 +666,13 @@ def extract_single_file(input_path: Path, extraction_mode: str, install_mode: st
                 )
         pages = count_epub_chapters(input_str)
         pages_label = "spine_items"
+        images_dropped = count_epub_images(input_str)
+        if images_dropped > _EPUB_IMAGE_NOTICE_THRESHOLD:
+            print(
+                f"  [warn] {input_path.name} contains {images_dropped} image(s); "
+                "their content is not extracted",
+                file=sys.stderr,
+            )
     elif ext == ".pdf":
         print(f"Extracting PDF: {input_str}")
         if looks_image_only(input_str):
@@ -783,6 +797,7 @@ def extract_single_file(input_path: Path, extraction_mode: str, install_mode: st
         "chars": len(text),
         "words": len(text.split()),
         "estimated_tokens": tokens,
+        "images_dropped": images_dropped,
         "text": text,
         **structure,
     }
@@ -924,6 +939,9 @@ def main():
     total_chars = len(consolidated_text)
     total_words = len(consolidated_text.split())
     total_tokens = estimate_tokens(consolidated_text)
+    total_images_dropped = sum(
+        src["images_dropped"] or 0 for src in extracted_sources
+    )
     
     # Detect structure from source content only. The generated SOURCE banners in
     # full_text.txt use rows of "=", which can otherwise become phantom setext
@@ -953,6 +971,7 @@ def main():
         "words": total_words,
         "estimated_tokens": total_tokens,
         "estimated_tokens_human": f"~{total_tokens // 1000}K",
+        "images_dropped": total_images_dropped,
         "output_text": str(OUTPUT_TEXT),
         "total_sources": len(extracted_sources),
         "sources": [
@@ -967,6 +986,7 @@ def main():
                 "chars": src["chars"],
                 "words": src["words"],
                 "estimated_tokens": src["estimated_tokens"],
+                "images_dropped": src["images_dropped"],
                 "chapters_detected": src["chapters_detected"],
                 "chapters_method": src["chapters_method"],
                 "has_toc": src["has_toc"]
