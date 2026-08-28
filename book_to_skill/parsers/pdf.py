@@ -79,7 +79,7 @@ def extract_with_pdftotext(pdf_path: str) -> str | None:
     try:
         pdf_path = os.path.abspath(pdf_path)
         result = subprocess.run(
-            ["pdftotext", "-layout", pdf_path, "-"],
+            ["pdftotext", "-layout", "-enc", "UTF-8", pdf_path, "-"],
             capture_output=True, text=True, timeout=120,
             encoding="utf-8", errors="replace",
         )
@@ -100,7 +100,7 @@ def looks_image_only(pdf_path: str, pages: int = 5) -> bool:
         return False
     try:
         result = subprocess.run(
-            ["pdftotext", "-f", "1", "-l", str(pages), os.path.abspath(pdf_path), "-"],
+            ["pdftotext", "-f", "1", "-l", str(pages), "-enc", "UTF-8", os.path.abspath(pdf_path), "-"],
             capture_output=True, text=True, timeout=30,
             encoding="utf-8", errors="replace",
         )

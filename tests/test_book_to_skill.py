@@ -1891,7 +1891,7 @@ class TestTextEncodingDetection:
 class TestPdftotextEncoding:
     """pdftotext output (UTF-8) is decoded as UTF-8, not the locale encoding."""
 
-    def test_pdftotext_decodes_as_utf8(self, monkeypatch):
+    def test_pdftotext_requests_utf8_output(self, monkeypatch):
         captured = {}
 
         class _Result:
@@ -1901,6 +1901,7 @@ class TestPdftotextEncoding:
         monkeypatch.setattr(pdf_parser.shutil, "which", lambda name: "/usr/bin/pdftotext")
 
         def fake_run(cmd, **kwargs):
+            captured["cmd"] = cmd
             captured.update(kwargs)
             return _Result()
 
@@ -1909,6 +1910,8 @@ class TestPdftotextEncoding:
         assert pdf_parser.extract_with_pdftotext("x.pdf") == "Café — naïve"
         assert captured.get("encoding") == "utf-8"
         assert captured.get("errors") == "replace"
+        cmd = captured.get("cmd") or []
+        assert "-enc" in cmd and cmd[cmd.index("-enc") + 1] == "UTF-8"
 
 
 class TestPdfPageCount:
